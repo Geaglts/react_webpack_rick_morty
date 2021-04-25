@@ -1,4 +1,5 @@
 const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -19,8 +20,20 @@ module.exports = {
                     loader: "babel-loader",
                 },
             },
+            {
+                test: /\.html$/,
+                use: {
+                    loader: "html-loader",
+                },
+            },
         ],
     },
+    plugins: [
+        new HTMLWebpackPlugin({
+            template: "./public/index.html",
+            filename: "./index.html",
+        }),
+    ],
     devServer: {
         open: true,
         compress: true,
