@@ -1,8 +1,8 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
@@ -17,6 +17,7 @@ module.exports = {
         extensions: [".js", ".jsx"],
         alias: {
             "@components": path.resolve(__dirname, "src", "components"),
+            "@pages": path.resolve(__dirname, "src", "pages"),
             "@styles": path.resolve(__dirname, "src", "styles"),
         },
     },
@@ -37,7 +38,7 @@ module.exports = {
             },
             {
                 test: /\.(s?css)$/,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
         ],
     },
@@ -50,6 +51,7 @@ module.exports = {
             filename: "[name].css",
         }),
         new CleanWebpackPlugin(),
+        new DotEnv(),
     ],
     optimization: {
         minimize: true,

@@ -1,0 +1,86 @@
+$prymary: #272727;
+$secondary: #d4aa7d;
+$background: #90A9B7;
+
+.CardContainer__container {
+    width: 80%;
+    max-width: 1212px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
+    place-items: center;
+    place-content: center;
+    padding-bottom: 50px;
+
+
+    .Card__character--container {
+        background-color: $prymary;
+        height: 300px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .16);
+        overflow: hidden;
+        margin: 0px 10px;
+        margin-top: 50px;
+        color: $secondary;
+        cursor: pointer;
+        transition: all 350ms;
+        
+        .Card__character--img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .Card__character--info {
+            padding: 20px;
+            font-size: 12pt;
+            position: relative;
+            height: calc(100% - 120px);
+
+            .Card__character--name {
+                font-size: 22pt;
+            }
+
+            .Card__character--origin-name {
+                text-align: center;
+                font-size: 14pt;
+                margin-top: 10px;
+            }
+
+
+            .Card__character--gender{
+                background-color: #6ed688;
+                display: inline-block;
+                color: $prymary;
+                font-weight: bold;
+                padding: 5px;
+                border-radius: 5px;
+                position: absolute;
+                top: -35px;
+                left: 5px;
+            }
+
+            .Card__character--status {
+                background-color: #6ed688;
+                color: $prymary;
+                display: inline-block;
+                padding: 10px 15px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+        }
+    }
+}
+
+.CardContainer__container:hover .Card__character--container {
+    opacity: .2;
+}
+
+.CardContainer__container .Card__character--container:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}

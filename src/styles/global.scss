@@ -1,6 +1,6 @@
 $prymary: #272727;
 $secondary: #d4aa7d;
-$background: #90A9B7;
+$background: #e5ecf0;
 
 * {
     margin: 0;
@@ -11,10 +11,4 @@ $background: #90A9B7;
 
 body {
     background-color: $background;
-
-    .App__header {
-        background: $prymary;
-        padding: 20px;
-        color: $secondary;
-    }
 }

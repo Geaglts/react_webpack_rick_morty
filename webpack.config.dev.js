@@ -1,16 +1,23 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const DotEnv = require("dotenv-webpack");
 
 module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
+        publicPath: "/",
     },
     mode: "development",
     resolve: {
         extensions: [".js", ".jsx"],
+        alias: {
+            "@components": path.resolve(__dirname, "src", "components"),
+            "@pages": path.resolve(__dirname, "src", "pages"),
+            "@styles": path.resolve(__dirname, "src", "styles"),
+        },
     },
     module: {
         rules: [
@@ -29,7 +36,7 @@ module.exports = {
             },
             {
                 test: /\.(s?css)$/,
-                use: ["style-loader", "css-loader", "sass-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
             },
         ],
     },
@@ -41,6 +48,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "[name].css",
         }),
+        new DotEnv(),
     ],
     devServer: {
         open: true,
